@@ -1,6 +1,9 @@
 package com.duansky.wordcount;
 
+import java.util.Collections;
+import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * date 2016年6月1日 上午10:55:30
@@ -14,8 +17,9 @@ public class Time implements Comparable<Time>{
 	private int month;
 	private int day;
 	
-	public static TreeSet<Time> TIME_HOUSE = new TreeSet<Time>(); 
-	public static long ERROR_COUNT = 0;
+	//should worry about multi-thread visit.
+	public static SortedSet<Time> TIME_HOUSE = Collections.synchronizedSortedSet(new TreeSet<Time>()); 
+	public static AtomicLong ERROR_COUNT = new AtomicLong(0);
 	
 	private Time(int year,int month,int day){
 		this.year = year;
@@ -25,20 +29,20 @@ public class Time implements Comparable<Time>{
 
 	private static Time getTime0(String time){
 		if(time == null) {
-			ERROR_COUNT++;
+			ERROR_COUNT.incrementAndGet();
 			return null;
 		}
 		int year,month,day;
 		try{
 			String[] t = time.split(" ");
 			if(t == null || t.length == 0) {
-				ERROR_COUNT++;
+				ERROR_COUNT.incrementAndGet();
 				System.out.println("Error time :" + time);
 				return null;
 			}
 			String[] s = t[0].split("-");
 			if(s == null || s.length < 3) {
-				ERROR_COUNT++;
+				ERROR_COUNT.incrementAndGet();
 				System.out.println("Error time :" + time);
 				return null;
 			}
@@ -47,7 +51,7 @@ public class Time implements Comparable<Time>{
 			day = Integer.parseInt(s[2]);
 			
 		}catch(NullPointerException | NumberFormatException e){
-			ERROR_COUNT++;
+			ERROR_COUNT.incrementAndGet();
 			System.out.println("Error time :" + time);
 			return null;
 		}

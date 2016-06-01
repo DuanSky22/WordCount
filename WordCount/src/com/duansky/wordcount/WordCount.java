@@ -13,7 +13,7 @@ import java.util.Map.Entry;
 
 public class WordCount {
 	
-	public static List<String> WORD_HOUSE = Arrays.asList("happy", "fear", "worry", "nervous", "anxious", "upset", "hope");
+	public static final List<String> WORD_HOUSE = Arrays.asList("happy", "fear", "worry", "nervous", "anxious", "upset", "hope");
 	
 	public Map<Time,Map<String,Integer>> map = new HashMap<>();
 	

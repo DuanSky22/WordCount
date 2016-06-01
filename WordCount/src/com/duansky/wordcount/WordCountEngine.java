@@ -66,7 +66,7 @@ public class WordCountEngine {
 		we.write();
 		
 		System.out.println("all job have done, we use " + (System.currentTimeMillis() - startTime) / 1000 + " seconds, and find " + 
-		Time.ERROR_COUNT + " wrong data, we just ignore them.");
+		Time.ERROR_COUNT.get() + " wrong data, we just ignore them.");
 	}
 
 }
