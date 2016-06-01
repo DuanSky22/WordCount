@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  * date 2016年6月1日 下午2:46:16
@@ -53,11 +52,11 @@ public class WriteEngine {
 
 	private void writeCoutent() {
 		Map<Time,Map<String,Integer>> map = wc.getMap();
-		for(Entry<Time,Map<String,Integer>> entry : map.entrySet()){
-			String time = entry.getKey().toString();
-			Map<String,Integer> content = entry.getValue();
+		for(Time time : Time.TIME_HOUSE){
+			String timeS = time.toString();
+			Map<String,Integer> content = map.get(time);
 			StringBuilder sb = new StringBuilder();
-			getLineData(sb,time,content);
+			getLineData(sb,timeS,content);
 			try {
 				writer.write(sb.toString());
 				writer.flush();

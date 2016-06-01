@@ -21,6 +21,9 @@ public class WordCountEngine {
 	static List<BlockingQueue<String[]>> queues;
 	
 	public static void main(String args[]) throws InterruptedException, ExecutionException{
+		
+		long startTime = System.currentTimeMillis();
+		
 		//1. we use a thread to read data.
 		System.out.println("1. we use a thread to read data.");
 		Thread readThread = new Thread(new Runnable(){
@@ -62,7 +65,8 @@ public class WordCountEngine {
 		WriteEngine we = new WriteEngine(outputUrl,fwc);
 		we.write();
 		
-		System.out.println("all job have done!");
+		System.out.println("all job have done, we use " + (System.currentTimeMillis() - startTime) / 1000 + " seconds, and find " + 
+		Time.ERROR_COUNT + " wrong data, we just ignore them.");
 	}
 
 }
