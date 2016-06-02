@@ -1,9 +1,9 @@
 package com.duansky.wordcount;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,6 +18,8 @@ public class WordCountEngine {
 	
 	final static String inputUrl= "E:\\sundary\\ljy\\tweetstream.2013. Jan22-29.csv";
 	final static String outputUrl = "E:\\sundary\\ljy\\output.txt";
+	public static final List<String> WORD_HOUSE = Arrays.asList("happy", "fear", "worry", "nervous", "anxious", "upset", "hope");
+
 	static List<BlockingQueue<String[]>> queues;
 	
 	public static void main(String args[]) throws InterruptedException, ExecutionException{

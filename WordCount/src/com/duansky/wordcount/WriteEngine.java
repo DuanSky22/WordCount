@@ -68,14 +68,14 @@ public class WriteEngine {
 	private void getLineData(StringBuilder sb, String time,
 			Map<String, Integer> content) {
 		sb.append(time);
-		for(String word : WordCount.WORD_HOUSE){
+		for(String word : WordCountEngine.WORD_HOUSE){
 			sb.append("\t" + content.get(word));
 		}
 		sb.append("\n");
 	}
 	
 	private void writeHead() {
-		List<String> words = WordCount.WORD_HOUSE;
+		List<String> words = WordCountEngine.WORD_HOUSE;
 		StringBuilder sb = new StringBuilder("Time\\Word");
 		for(String word : words){
 			sb.append("\t" + word);

@@ -1,8 +1,6 @@
 package com.duansky.wordcount;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -12,8 +10,6 @@ import java.util.Map.Entry;
  */
 
 public class WordCount {
-	
-	public static final List<String> WORD_HOUSE = Arrays.asList("happy", "fear", "worry", "nervous", "anxious", "upset", "hope");
 	
 	public Map<Time,Map<String,Integer>> map = new HashMap<>();
 	
@@ -29,14 +25,14 @@ public class WordCount {
 		//words
 		String[] words = content.toLowerCase().split(" ");
 		for(String word : words){
-			if(WORD_HOUSE.contains(word)){
+			if(WordCountEngine.WORD_HOUSE.contains(word)){
 				add(time,word);
 			}
 		}
 	}
 	
 	private void add(Time time,String word){
-		if(WORD_HOUSE.contains(word)){
+		if(WordCountEngine.WORD_HOUSE.contains(word)){
 			if(map.containsKey(time)){
 				Map<String,Integer> m = map.get(time);
 				if(m.containsKey(word)){
